@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			 //转义字符
+			/*
+			 * \d:数字类型
+			 * \D:非数字类型
+			 * \s:空格
+			 * \S:非空格
+			 * \w:字符类型
+			 * \W:非字符类型
+			 * \b:独立的部分
+			 * \B:非独立的部分（起始、结束、空格）
+			 * .:任意字符。\.表示真正的点
+			 * \1、\2、等代表重复子项:\1代表重复的第一个子项，/2代表重复的第二个子项。。。重复的子项必须和原子项完全一致
+			 * 例如：/\w\w/可以匹配ab、ac、az等，/(\w)\1/必须匹配两个相等的值，例如aa、bb、cc等
+			 *
+			 */
+			/*var str = 'abc';
+			var re = /a.c/; //a+任意字符+c
+			var re2 = /a\.c/;
+			alert(re.test(str)); //true
+			alert(re2.test(str)); //false*/
+			 //var str = 'onetwo';
+			 //var re = /\bone/; //one前面是独立的部分，也就是说必须以one开头或者one前面是空格
+			 //var re2=/one\b/;//one后面必须是独立的部分，即one后面必须是结束或者空格。
+			 //alert(re.test(str));//true
+			 //alert(re2.test(str));//false
+			var str = 'abca';
+			var re = /(a)(b)(c)\2/; //匹配abcb,/(a)(b)(c)\1/匹配abca
+			alert(re.test(str)); //false
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

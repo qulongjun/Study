@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * match:正则去匹配字符串，如果匹配成功，则返回匹配成功的数组，如果匹配不成功，就返回null
+			 * 写法：字符串.match(正则)
+			 * 正则默认：正则匹配成功就会结束，如果想全部查找，就要加标识g：全局匹配
+			 * 量词：在正则中匹配不确定的位置
+			 * +：至少出现一次>=1
+			 */
+			var str = 'adasdakd13jlkjdlascasdas2142da23scdga1sdadas5345dasfwe32qgsdfewf';
+			var re = /\d+/g;
+			 //alert(typeof str.match(re));//object
+			alert(str.match(re)); //匹配出所有
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

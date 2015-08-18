@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //^:放在开头，不是放在[]中代表起始的位置
+			 //$:放在最后的位置代表结束的位置
+			window.onload = function() {
+				var oText = document.getElementById("text");
+				var oBtn = document.getElementById("btn");
+				var re = /^[1-9]\d{4,11}$/; //该字符串必须以1-9开头，且后面所有位数均为数字，总长度为5~12位，且为完整的字符。
+				oBtn.onclick = function() {
+					if (re.test(oText.value)) {
+						alert('true');
+					} else {
+						alert('false');
+					}
+				};
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="text" id="text" value="" />
+		<input type="button" id="btn" value="确定" />
+	</body>
+
+</html>

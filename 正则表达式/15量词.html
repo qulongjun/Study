@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //量词：{}
+			 //{4,7}:大括号前面的字符出现的次数最小出现4次，最多出现7次
+			 //{4,}:不写第二个数表示最少出现4次，不设置最大值
+			 //{4}:只写一个值，不写逗号，表示正好出现4次
+			 //+:至少出现一次{1,} \d+==\d{1,}
+			 //?:0次或者一次，{0,1}
+			 //*:至少出现0次，{0,}
+			var str = 'ab';
+			var str2='ac';
+			var re = /ab+/;
+			var re2=/ab*/;
+			alert(re.test(str)); //true
+			alert(re.test(str2)); //false,b至少要出现一次
+			alert(re2.test(str2)); //true,b可以出现，可以不出现
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

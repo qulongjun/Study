@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //匹配子项：小括号()，还有另外一个意思：分组操作
+			 //把正则的整体叫做（母亲），小括号为（孩子）
+			 //第一个括号为第一子项，第二个括号为第二子项
+			 //replace:替换function(){$0,$1,$2...}，第一个参数为母亲，第二个参数为第一个子项，第三个参数为第二个子项
+			var str = '2013-06-07';
+			var re = /(\d+)(-)/g;
+			str = str.replace(re, function($0, $1, $2) {
+				//$0:母亲，$1:第一个子项，$2第二个子项
+				//alert($0);//2013-,06-
+				//alert($1);//2013,06
+				//alert($2);//-,-
+				return $1 + '.';
+			});
+			alert(str);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

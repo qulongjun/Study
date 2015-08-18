@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //字符类：一组相似的元素/字符 []
+			 //[]整体代表一个字符a[bde]c 一共有三位
+			 //a[bde]c的意思是匹配abc、adc、aec
+			 //var str = 'abc';
+			 //var str2 = 'abdc'
+			 //var re = /a[bde]c/; //abc、adc、aec
+			 //alert(re.test(str)); //true
+			 //alert(re.test(str2)); //false
+			 //排除：^,如果^写在[]里面，就代表排除的意思
+			 //var str = 'abc';
+			 //var re = /a[^bde]c/; //不能出现abc/adc/aec
+			 //alert(re.test(str));//false
+			 //范围:[a-z]、[0-9]，范围必须从小到大，不能从大到小
+			var str = 'abc';
+			var str2='abdc'
+			var re = /a[a-z]c/; //匹配aac-azc
+			var re2 = /a[0-9]c/; //匹配a0c-a9c
+			var　 re3 = /a[a-z0-9A-Z]c/; //可以是aac-azc,a0c-a9c,aAc-aZc
+			var re4=/a[bde]+c/;//+代表匹配多个可能
+			alert(re.test(str)); //true
+			alert(re2.test(str)); //false
+			alert(re3.test(str)); //true
+			alert(re4.test(str2));//true
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

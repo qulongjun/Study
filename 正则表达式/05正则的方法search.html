@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * Search:正则去匹配字符串，如果匹配成功，就返回匹配成功的位置index，如果匹配失败，就返回-1!
+			 * Search写法：字符串.search(正则)。
+			 * 返回的位置从0开始计算。如果多个值查询，则返回匹配成功的第一个位置，例如查找bcd，则会返回b的位置
+			 * 正则的默认是区分大小写的
+			 * 如果不区分大小写，在正则的最后加上标识i，i为ignore，不区分大小写
+			 */
+			var str = 'abcdef';
+			var re = /b/;
+			var re2 = /bcd/;
+//			var re3 = /B/i;
+			var re3=new RegExp('B','i');//两种写法一样
+			alert(str.search(re)); //返回1
+			alert(str.search(re2)); //返回1
+			alert(str.search(re3));//1
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

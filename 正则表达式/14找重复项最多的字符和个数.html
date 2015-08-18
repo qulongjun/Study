@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var str = 'assssjdsssdjsfvssssdfsdnlkjjlssss';
+			var arr = str.split(''); //将String转成数组
+			str = arr.sort().join(''); //将数组转成String
+			var value = '';
+			var index = 0;
+			var re = /(\w)\1+/g;
+			str.replace(re, function($0, $1) {
+				if (index < $0.length) {
+					index = $0.length;
+					value = $1;
+				}
+			});
+			alert(value + '   ' + index);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

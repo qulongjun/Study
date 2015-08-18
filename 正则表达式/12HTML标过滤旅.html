@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * |:或的意思
+			 * replace:第二个参数可以是字符串，也可以是回调函数,函数的第一个参数就是匹配成功的字符
+			 */
+			window.onload = function() {
+				var oText = document.getElementById("textarea1");
+				var oText2 = document.getElementById("textarea2");
+				var oBtn = document.getElementById("input1");
+				var re = /张三|李四|傻逼/g;
+				oBtn.onclick = function() {
+					var re = /<[^>]+>/g;
+					oText2.value = oText.value.replace(re, '');
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		替换前：
+		<br />
+		<textarea id="textarea1"></textarea>
+		<br /> 替换后
+		<br />
+		<textarea id="textarea2"></textarea>
+		<br />
+		<input type="button" id="input1" value="确定" />
+	</body>
+
+</html>

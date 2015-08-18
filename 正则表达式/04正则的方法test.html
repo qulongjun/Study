@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //test:正则去匹配匹配字符串，如果匹配成功，则返回true，如果返回失败，就返回假
+			 //使用方法：正则.test(字符串);返回值为Boolean
+			var str = 'abcdef';
+			var re = /b/;
+			var re2 = /w/;
+			var re3 = /bc/;
+			var re4 = /bd/; //两个字符串连在一起表示整体，查找str中bd连在一起的字符串
+			/*alert(re.test(str)); //true
+			alert(re3.test(str)); //true
+			alert(re2.test(str)); //false
+			alert(re4.test(str)); //false*/
+			 //转义字符
+			/*
+			 * \s:空格
+			 * \S:非空格
+			 * \d:数字
+			 * \D:非数字
+			 * \w:字符:字母、数字、下划线_
+			 * \W:非字符:
+			 * 使用方法：/\D/:不全是数字
+			 * /\W/:不全是字符
+			 */
+			var str2 = '37845154s56165461';
+			var re = /\D/;
+			if (re.test(str2)) {
+				alert('不全是数字');
+			} else {
+				alert('全是数字');
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

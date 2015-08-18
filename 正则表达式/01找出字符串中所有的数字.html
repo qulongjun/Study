@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var str = 'dfsjfk3csdf21smlkf54slkd7jflsd0nmfs';
+			var arr = [];
+			var num = 0;
+			alert(findNum(str));
+
+			function findNum(str) {
+				for (var i = 0; i < str.length; i++) {
+					if (str[i] >= '0' && str[i] <= '9') {
+						num = num * 10 + parseInt(str[i]);
+					} else {
+						if (num) {
+							arr.push(num);
+						}
+						num = 0;
+					}
+				}
+				return arr;
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
