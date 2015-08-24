@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function Checking(amount) {
+					this.balance = amount;
+					this.deposit = deposit;
+					this.withdraw = withdraw;
+					this.toString = toString;
+				}
+				//存款
+
+			function deposit(amount) {
+					this.balance += amount;
+				}
+				//取款
+
+			function withdraw(amount) {
+					if (amount <= this.balance) {
+						this.balance -= amount;
+					} else {
+						alert('余额不足');
+					}
+				}
+				//显示余额
+
+			function toString() {
+				return '余额为:' + this.balance;
+			}
+			var account = new Checking(500);
+			account.deposit(100);
+			alert(account.toString());
+			account.withdraw(300);
+			alert(account.toString());
+			account.withdraw(300);
+			alert(account.toString());
+		</script>
+	</body>
+
+</html>

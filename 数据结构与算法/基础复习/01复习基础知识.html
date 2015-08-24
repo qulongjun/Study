@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function showScope() {
+				scope = 'local'; //未使用var关键字声明的变量为全局变量
+				return scope;
+			}
+			scope = 'global';
+			alert(scope); //global
+			alert(showScope()); //local
+			alert(scope); //local
+		</script>
+	</body>
+
+</html>
