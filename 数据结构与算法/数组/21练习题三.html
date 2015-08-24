@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 修改weeklyTemps对象，使其可以使用一个二维数组来存储每月的有用数据。
+			 * 增加一些方法以显示月平均数、具体某一周平均数和所有周平均数
+			 */
+			function weekTemps() {
+				this.dataStore = [];
+				this.add = add;
+				this.averageMonth = averageMonth;
+				this.oneWeekAverage = oneWeekAverage;
+				this.totalWeekAverage = totalWeekAverage
+			}
+
+			function add(temp) {
+					this.dataStore.push(temp);
+				}
+				//月平均数
+
+			function averageMonth() {
+				var total = 0;
+				var index = 0;
+				for (var i = 0; i < this.dataStore.length; i++) {
+					for (var j = 0; j < this.dataStore[i].length; j++) {
+						if (this.dataStore[i][j]) {
+							total += parseInt(this.dataStore[i][j]);
+							index++;
+						}
+					}
+				}
+				return total / index;
+			}
+
+			function oneWeekAverage(num) {
+				var total = 0;
+				var index = 0;
+				for (var i = 0; i < this.dataStore[num].length; i++) {
+					if (this.dataStore[num][i]) {
+						total += parseInt(this.dataStore[num][i]);
+						index++;
+					}
+				}
+				return total / index;
+			}
+
+			function totalWeekAverage() {
+				var total = 0;
+				var index = 0;
+				var arr = [];
+				for (var i = 0; i < this.dataStore.length; i++) {
+					for (var j = 0; j < this.dataStore[i].length; j++) {
+						if (this.dataStore[i][j]) {
+							total += parseInt(this.dataStore[i][j]);
+							index++;
+						}
+					}
+					arr[i] = total / index;
+					total = 0;
+					index = 0;
+				}
+				return arr;
+			}
+			var weeks = new weekTemps();
+			weeks.add([
+				[1],
+				[2],
+				[3]
+			]);
+			weeks.add([
+				[4],
+				[5],
+				[6]
+			]);
+			weeks.add([
+				[7],
+				[8],
+				[9]
+			]);
+			weeks.add([
+				[11],
+				[12],
+				[13]
+			]);
+			weeks.add([
+				[21],
+				[22],
+				[23]
+			]);
+			weeks.add([
+				[31],
+				[32],
+				[33]
+			]);
+			weeks.add([
+				[41],
+				[42],
+				[43]
+			]);
+			alert(weeks.averageMonth());
+			alert(weeks.oneWeekAverage(1));
+			alert(weeks.totalWeekAverage());
+			 //生成二维数组																		alert(twod);*/ //，，，，，
+			Array.matrix = function(numrows, numcols, initial) {
+				var arr = []; //arr为最终的二维数组
+				for (var i = 0; i < numrows; i++) {
+					var columns = []; //记录列
+					for (var j = 0; j < numcols; j++) {
+						columns[j] = initial; //将列的每一个元素设置为初始值
+					}
+					arr[i] = columns;
+				}
+				return arr;
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

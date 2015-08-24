@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var numbers = []; //直接定义数组
+			alert(numbers.length); //直接定义法长度为0
+			var numbers2 = [3, 4, 5, 6]; //在声明时候直接初始化，放入初始值
+			alert(numbers2.length); //4
+			var numbers3 = new Array(); //写Array和Array()一样
+			alert(numbers3.length); //0
+			var numbers3 = new Array(20); //括号里可以写入初始化的长度
+			alert(numbers3.length); //20
+			var number4 = [2, 3, 'Hello', false]; //数组中元素可以是不同的类型
+			alert(number4.length); //4
+			 //判断数组的方法:Array.isArray(obj);
+			var number5 = 3;
+			var number6 = [];
+			alert(Array.isArray(number5)); //false
+			alert(Array.isArray(number6)); //true
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

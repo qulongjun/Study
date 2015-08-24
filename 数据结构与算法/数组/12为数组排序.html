@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var nums = [1, 2, 5, 7, 3];
+			nums.reverse();
+			alert(nums); //37521
+			 //sort()方法一般用来对字符串排序，基本不对数字数组使用
+			var names = ['zhangSan', 'liSi', 'wangWu', 'AnqiLa', 'Baby'];
+			names.sort();
+			alert(names);
+			var ages = [1, 4, 2, 100, 20, 30, 25, 13];
+			ages.sort(); //按照字典顺序排序
+			ages.sort(compare); //按照自定义的方法排序1、2、4、13、20、25、30、100
+			alert(ages); //1,100,13,2,20,25,30,4
+			function compare(num1, num2) {
+				return num1 - num2;
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

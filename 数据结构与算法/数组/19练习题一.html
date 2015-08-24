@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 创建一个记录学生成绩的对象，提供一个添加成绩的方法
+			 * 以及一个显示学生平均成绩的方法
+			 */
+			function student() {
+				this.grade = [];
+				this.add = add;
+				this.average = average;
+			}
+
+			function add(temp) {
+				this.grade.push(temp);
+			}
+
+			function average() {
+				var total = 0;
+				for (var i = 0; i < this.grade.length; i++) {
+					total += this.grade[i];
+				}
+				return total / this.grade.length;
+			}
+			var stu = new student();
+			stu.add(30);
+			stu.add(44);
+			stu.add(56);
+			stu.add(31);
+			stu.add(96);
+			alert(stu.average());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

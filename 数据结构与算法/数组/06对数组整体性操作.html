@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var nums = [];
+			for (var i = 0; i < 10; i++) {
+				nums[i] = i + 1;
+			}
+			var cyNums = nums //浅复制，只复制了nums的引用，一个数组修改会影响到复制的元素
+				//nums[0] = 100;
+				//alert(nums);
+				//alert(cyNums);
+
+			//深复制
+			function copy(oldArray, newArray) {
+				for (var i = 0; i < oldArray.length; i++) {
+					newArray[i] = oldArray[i];
+				}
+				return newArray;
+			}
+			var cyNums2 = [];
+			cyNums2 = copy(nums, cyNums2);
+			 //alert(nums);
+			 //alert(cyNums2);
+			nums[0] = 100; //修改了nums的值并不影响复制后的数组
+			 //alert(nums);
+			 //alert(cyNums2);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

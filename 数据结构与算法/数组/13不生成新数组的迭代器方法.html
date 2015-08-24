@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*function sequare(num) {
+																															alert(num * num);
+																														}*/
+			var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+			 //nums.forEach(sequare); //1,4,9,15,25,36
+			/*nums.forEach(function(num) { //1,4,9,15,25,36
+				alert(num * num);
+			});*/
+			/*var result = nums.every(function(num) {
+				if (num == 7) {
+					return false;
+				}
+				return true;
+			});*/
+			/*var result = nums.some(function(num) {
+				if (num > 8) {
+					return true;
+				}
+				return false;
+			});*/
+			var names=['zhanSan','loves','reading','english','story'];
+			/*var result = names.reduce(function(total, value) {
+				return total + value;
+			})*/
+			var result = names.reduceRight(function(total, value) {
+				return total + value;
+			})
+			 alert(result);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

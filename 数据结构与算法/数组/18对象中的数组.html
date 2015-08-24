@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function weekTemps() {
+				this.dataStore = [];
+				this.add = add;
+				this.average = average;
+			}
+
+			function add(temp) {
+				this.dataStore.push(temp);
+			}
+
+			function average() {
+				var total = 0;
+				for (var i = 0; i < this.dataStore.length; i++) {
+					total += this.dataStore[i];
+				}
+				return total / this.dataStore.length;
+			}
+			var thisWeek = new weekTemps();
+			thisWeek.add(52);
+			thisWeek.add(55);
+			thisWeek.add(56);
+			thisWeek.add(50);
+			thisWeek.add(42);
+			thisWeek.add(43);
+			thisWeek.add(46);
+			alert(thisWeek.average());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

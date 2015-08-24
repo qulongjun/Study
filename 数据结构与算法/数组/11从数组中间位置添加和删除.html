@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * splice()为数组提供添加删除元素方法
+			 * 参数：
+			 * 1、起始索引，希望开始添加元素的地方
+			 * 2、需要删除的元素个数，当添加时为0
+			 * 3、想要添加数组的元素
+			 */
+			var nums = [1, 2, 3, 4, 5, 6];
+			 //nums.splice(2, 2); //3和4被删除
+			 //nums.splice(2); //当只写一个参数，代表从该index开始到后面的所有元素都删除
+			 //nums.splice(2, 2, [7, 8]);//127856
+			nums.splice(2,0,[7,8]);
+			alert(nums);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
