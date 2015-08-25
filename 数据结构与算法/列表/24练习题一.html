@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 增加一个向列表中插入元素的方法，该方法只在待插元素大于列表中的所有元素时才执行插入操作。
+			 * 对于数字，数值上大于
+			 * 对于字母，是指字母表中的出现顺序。
+			 */
+			 //List构造函数
+			function List() {
+				this.listSize = 0; //列表元素个数，属性
+				this.pos = 0; //当前位置，属性
+				this.dataStore = []; //初始化一个空数组来保存列表元素
+				this.clear = clear; //清空元素
+				this.find = find; //查找元素
+				this.toString = toString; //返回字符串形式
+				this.insert = insert; //从现有元素后面插入新元素
+				this.append = append; //从末尾添加新元素
+				this.remove = remove; //删除元素
+				this.front = front; //将列表当前位置移动到第一个位置
+				this.end = end; //将列表当前位置移动到最后一个位置
+				this.prev = prev; //前移一位
+				this.next = next; //后移一位
+				this.length = length; //列表元素个数，属性
+				this.curPos = curPos; //返回当前位置
+				this.moveTo = moveTo; //将当前位置移动到指定位置
+				this.getElemtent = getElement; //返回当前位置元素
+				this.contains = contains; // 列表是否包含元素
+				this.insertTop = insertTop; //练习一
+			}
+
+			function append(element) {
+					this.dataStore[this.listSize++] = element;
+				}
+				//查找元素，找到返回index，找不到返回-1；
+
+			function find(element) {
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (this.dataStore[i] == element) {
+						return i;
+					}
+				}
+				return -1;
+			}
+
+			function remove(element) {
+				var result = this.find(element);
+				if (result > -1) {
+					this.dataStore.splice(result, 1);
+					this.listSize--;
+					return true;
+				}
+				return false;
+			}
+
+			function length() {
+				return this.listSize;
+			}
+
+			function toString() {
+				return this.dataStore;
+			}
+
+			function insert(element, after) {
+				var insertPos = this.find(after);
+				if (insertPos > -1) {
+					this.dataStore.splice(insertPos + 1, 0, element);
+					this.listSize++;
+					return true;
+				}
+				return false;
+			}
+
+			function clear() {
+				delete this.dataStore;
+				this.dataStore = [];
+				this.dataStore.length = 0;
+				this.listSize = this.pos = 0;
+			}
+
+			function contains(element) {
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (this.dataStore[i] == element) {
+						return true;
+					}
+				}
+				return false;
+			}
+
+			function front() {
+				this.pos = 0;
+			}
+
+			function end() {
+				this.pos = this.listSize - 1;
+			}
+
+			function prev() {
+				if (this.pos > 0) {
+					--this.pos;
+				}
+			}
+
+			function next() {
+				if (this.pos < this.listSize - 1) {
+					++this.pos;
+				}
+			}
+
+			function curPos() {
+				return this.pos;
+			}
+
+			function moveTo(position) {
+				this.pos = position;
+			}
+
+			function getElement() {
+				return this.dataStore[this.pos];
+			}
+			var insertPos = this.find(after);
+			if (insertPos > -1) {
+				for (var i = 0; i < ) {}
+			}
+			return false;
+			}
+			var names = new List();
+			names.append('zhangSan');
+			names.append('liSi');
+			names.append('wangWu');
+			names.append('zhaoLiu');
+			names.append('ceshi');
+			names.insert('haha', 'liSi');
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
