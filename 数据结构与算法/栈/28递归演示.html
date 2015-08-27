@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 递归操作——栈实现
+			 * 以阶乘为例
+			 */
+			function fact(num) {
+				//首先，将数字一个个入栈
+				var s = new stack();
+				while (num > 0) {
+					s.push(num--);
+				}
+				var result = 1;
+				while (s.top) {
+					result *= s.pop();
+				}
+				return result;
+			}
+			alert(fact(5)); //1*1*2*3*4*5=120
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

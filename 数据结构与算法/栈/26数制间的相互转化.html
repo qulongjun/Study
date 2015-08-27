@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 数制间的相互转化：
+			 * 1.n%b-->得到余数-->余数入栈;
+			 * 2.n/b-->得到商-->商用来代替n作为第二轮循环的被除数.
+			 *
+			 * 例如：将十进制的20变成八进制
+			 * 1.20%8=4--->入栈
+			 * 2.20/8=2--->代替n=2
+			 * 3.2%8=2--->入栈
+			 * 4.2/8=0--->结束
+			 * 5.此时栈中数据为4.2,出栈之后为24；
+			 *
+			 */
+			function mulBase(num, base) {
+				var s = new stack();
+				do {
+					s.push(num % base);
+					num = Math.floor(num / base);
+				} while (num > 0);
+				var convert = '';
+				while (s.top > 0) {
+					convert += s.pop();
+				}
+				return convert;
+			}
+			alert(mulBase(20, 8));
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</body>
+
+</html>

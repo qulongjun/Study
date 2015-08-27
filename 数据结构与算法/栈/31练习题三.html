@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 糖果盒栈，糖果盒里有红色、黄色、白色的三色糖果，先想去掉其中一种颜色的糖果并且
+			 * 不改变原来的排列顺序
+			 * 思路：准备一个备用栈，从原栈中依次取出糖果并保存到备用栈中，直到所有那种糖果都被取出
+			 * 之后，再出备用栈。
+			 */
+			function removeColor(beginStack, color) {
+				var s = new stack();
+				while (beginStack.peek()) {
+					if (beginStack.peek() != color) {
+						s.push(beginStack.peek());
+					}
+					beginStack.pop();
+				}
+				while (s.peek()) {
+					beginStack.push(s.pop());
+				}
+				return beginStack;
+			}
+			var colors = new stack();
+			colors.push('red');
+			colors.push('yellow');
+			colors.push('red');
+			colors.push('white');
+			colors.push('yellow');
+			colors.push('red');
+			colors.push('yellow');
+			colors.push('white');
+			colors.push('red');
+			removeColor(colors, 'red');
+			while (colors.peek()) {
+				alert(colors.pop());
+			}
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

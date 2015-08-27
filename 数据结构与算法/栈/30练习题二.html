@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 算术运算符中缀表达式转后缀表达式
+			 * 中缀表达式： 操作符是以中缀形式处于操作数的中间（例：3 + 4），
+			 * 中缀表达式是人们常用的算术表示方法。
+			 * 后缀表达式：不包含括号，运算符放在两个运算对象的后面，所有的计算按运算符出现的顺序，严格从左向右进行（不再考虑运算符的优先规则，
+			 * 如：(2 + 1) * 3 ， 即2 1 + 3 *
+			 * 9+(3-1)*3+10/2  ->9 3 1 - 3 * + 10 2 / +
+			 *
+			 * 规则：从左到右遍历中缀表达式的每个数字和符号，若是数字就输出，即成为后缀表达式的一部分；
+			 * 若是符号，则判断其与栈顶符号的优先级，是右括号或优先级栈低于顶符号（乘除优先加减）则栈顶元素依次出找并输出，
+			 * 并将当前符号进栈，一直到最终输出后缀表达式为止。
+			 */
+			function convert(str) {
+				var result = '';
+				var s = new stack();
+				for (var i = 0; i < str.length; i++) {
+					if (str[i] >= '0' && str[i] <= '9') {
+						result += str[i]; //如果是0~9，则直接输出
+					} else {
+						if (str[i] == '+' || str[i] == '-') {
+							var topResult = s.peek();
+							while (topResult == '*' || topResult == '/') {
+								result += s.pop();
+								topResult = s.peek();
+							}
+							s.push(str[i]);
+						} else {
+							if (str[i] == '*' || str[i] == '/') {
+								s.push(str[i]);
+							} else {
+								if (str[i] == ')') {
+									var topResultLeft = s.peek();
+									while (topResultLeft && topResultLeft != '(') {
+										result += s.pop();
+										topResultLeft = s.peek();
+									}
+								}
+							}
+						}
+					}
+				}
+				return result;
+			}
+			var num = '9+(3-1)*3+10/2';
+			alert(convert(num));
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

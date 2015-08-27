@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 用栈来匹配一个算数表达式中的括号是否匹配
+			 * 我的思路：定义一个栈。依次遍历算数表达式的每一位，
+			 * 当遇到左括号的时候就入栈，遇到右括号的时候就出栈。
+			 * 正常情况下，如果算术表达式扫描完，top==0，则为正确的
+			 * 如果top！=0，则表示匹配错误
+			 *
+			 */
+			var s = new stack();
+
+			function isRight(str) {
+				for (var i = 0; i < str.length; i++) {
+					if (str[i] == '(') {
+						s.push(i);
+					}
+					if (str[i] == ')') {
+						s.pop();
+					}
+				}
+				if (s.top) {
+					return false;
+				}
+				return true;
+			}
+			if (!isRight('2.3+((23/12)-(12-45)+(123+21245)')) {
+				while (s.top) {
+					alert(s.pop());
+				}
+			}
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

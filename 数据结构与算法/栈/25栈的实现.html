@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+			var stacks = new stack();
+			stacks.push('zhangSan');
+			stacks.push('liSi');
+			stacks.push('wangWu');
+			stacks.push('zhaoLiu');
+			stacks.push('test');
+			while (stacks.top) {
+				alert(stacks.pop());
+				//alert(stacks.peek());
+				top--;
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

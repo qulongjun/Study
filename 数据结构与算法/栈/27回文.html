@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *回文：即单词或者数字、字符串之类的相对称，例如
+			 * abcdcba,123454321,abc de dcba等
+			 * 可以通过栈实现回文操作：
+			 * 将数字、字符串等一个个压入栈中，并按顺序出栈。
+			 * 出栈之后的顺序和入栈的顺序相反，由于回文的特点
+			 * 如果出栈之后的字符串和入栈时候的一致，则判定为回文。
+			 */
+			function isPalindrome(word) {
+				var s = new stack();
+				for (var i = 0; i < word.length; i++) {
+					s.push(word[i]);
+				}
+				var newWord = '';
+				while (s.top) {
+					newWord += s.pop();
+				}
+				if (newWord == word) {
+					return true;
+				}
+				return false;
+			}
+			alert(isPalindrome('1abcba1'));
+			
+			
+			 //Stack类的构造函数
+			function stack() {
+				this.dataStore = []; //数据集
+				this.top = 0; //栈顶index
+				this.push = push; //入栈元素
+				this.pop = pop; //出栈元素
+				this.peek = peek; //预览元素，不出栈
+			}
+
+			function push(element) {
+				this.dataStore[this.top++] = element;
+			}
+
+			function pop() {
+				return this.dataStore[--this.top];
+			}
+
+			function peek() {
+				return this.dataStore[this.top - 1];
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
