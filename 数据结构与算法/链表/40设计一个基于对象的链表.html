@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 基于对象的链表
+			 * 包含两个类：
+			 * Node：表示节点
+			 * LinkedList提供插入节点、删除节点显示列表元素的方法，以及一些辅助方法
+			 */
+			function Node(element) {
+				this.element = element;
+				this.next = null;
+			}
+
+			function List() {
+					this.head = new Node('head');
+					this.find = find;
+					this.findPrevious = findPrevious;
+					this.insert = insert;
+					this.remove = remove;
+					this.display = display;
+				}
+				/*查找元素*/
+
+			function find(item) {
+					var current = this.head;
+					while (current && current.element != item) {
+						current = current.next;
+					}
+					return current;
+				}
+				//找到要删除元素的前一个节点
+
+			function findPrevious(item) {
+					var current = this.head;
+					while (current.next && current.next.element != item) {
+						current = current.next;
+					}
+					return current;
+				}
+				/*
+				 * item：将新元素插入item元素之后
+				 * newElement：新元素
+				 */
+
+			function insert(newElement, item) {
+				var current = this.find(item);
+				var newNode = new Node(newElement);
+				newNode.next = current.next; //顺序不能反
+				current.next = newNode;
+			}
+
+			function display() {
+				var curNode = this.head;
+				var arrs = [];
+				while (curNode) {
+					arrs.push(curNode.element);
+					curNode = curNode.next;
+				}
+				return arrs;
+			}
+
+			function remove(item) {
+				var current = this.findPrevious(item);
+				if (current.next.next) {
+					current.next = current.next.next;
+				}else{
+					current.next=null;
+				}
+			}
+			var lists = new List();
+			lists.insert('zhangSan', 'head');
+			lists.insert('liSi', 'zhangSan');
+			lists.insert('wangWu', 'zhangSan');
+			lists.remove('liSi');
+			alert(lists.display());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

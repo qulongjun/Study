@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 循环链表：末尾的元素指针指向开头head元素
+			 * 包含两个类：
+			 * Node：表示节点
+			 * LinkedList提供插入节点、删除节点显示列表元素的方法，以及一些辅助方法
+			 */
+			function Node(element) {
+				this.element = element;
+				this.next = this.head; //后继节点
+				this.previous = null; //前驱节点
+			}
+
+			function List() {
+					this.head = new Node('head');
+					this.find = find;
+					this.findPrevious = findPrevious;
+					this.insert = insert;
+					this.remove = remove;
+					this.display = display;
+					this.findLast = findLast;
+					this.disReverse = disReverse;
+				}
+				/*查找元素*/
+
+			function find(item) {
+					var current = this.head;
+					while (current && current.element != item) {
+						current = current.next;
+					}
+					return current;
+				}
+				//找到要删除元素的前一个节点
+
+			function findPrevious(item) {
+				var current = this.head;
+				while (current.next && current.next.element != item) {
+					current = current.next;
+				}
+				return current;
+			}
+
+			function findLast() {
+					var current = this.head;
+					while (current.next) {
+						current = current.next;
+					}
+					return current;
+				}
+				/*
+				 * item：将新元素插入item元素之后
+				 * newElement：新元素
+				 */
+
+			function insert(newElement, item) {
+				var current = this.find(item);
+				var newNode = new Node(newElement);
+				if (current.next) {
+					newNode.next = current.next; //顺序不能反
+					newNode.previous = current; //新节点的前驱指针指向current
+					current.next.previous = newNode;
+					current.next = newNode;
+				} else {
+					current.next = newNode;
+					newNode.previous = current;
+				}
+			}
+
+			function display() {
+				var curNode = this.head;
+				var arrs = [];
+				do {
+					arrs.push(curNode.element);
+					curNode = curNode.next;
+				} while (curNode && curNode.element != 'head')
+				return arrs;
+			}
+
+			function remove(item) {
+				var current = this.find(item); //找到要删除的节点
+				if (current.next && current.next.element != 'head') {
+					current.previous.next = current.next;
+					current.next.previous = current.previous;
+					current.next = null;
+					current.previous = null;
+				} else {
+					current.previous.next = this.head;
+					current.previous = null;
+				}
+			}
+
+			function disReverse() {
+				var current = this.findLast();
+				var arrs = [];
+				while (current.previous) {
+					arrs += current.element;
+					current = current.previous;
+				}
+				return arrs;
+			}
+			var lists = new List();
+			lists.insert('zhangSan', 'head');
+			lists.insert('liSi', 'zhangSan');
+			lists.insert('wangWu', 'zhangSan');
+			lists.remove('wangWu');
+			alert(lists.display());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
