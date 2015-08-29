@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 队列：先进先出
+			 *
+			 */
+			function Queue() {
+				this.dataStore = []; //数组，用来保存队列数据
+				this.enqueue = enqueue; //入队
+				this.dequeue = dequeue; //出队
+				this.front = front; //队首元素
+				this.back = back; //队尾元素
+				this.toString = toString; //转换成字符串格式
+				this.empty = empty; //判断是否为空
+			}
+
+			function enqueue(element) {
+				this.dataStore.push(element);
+			}
+
+			function dequeue() {
+				this.dataStore.shift();
+			}
+
+			function front() {
+				return this.dataStore[0];
+			}
+
+			function back() {
+				return this.dataStore[this.dataStore.length - 1];
+			}
+
+			function toString() {
+				var result = '';
+				for (var i = 0; i < this.dataStore.length; i++) {
+					result += this.dataStore[i];
+				}
+				return result;
+			}
+
+			function empty() {
+				if (this.dataStore.length) {
+					return false;
+				}
+				return true;
+			}
+			var q = new Queue();
+			q.enqueue('one');
+			q.enqueue('two');
+			q.enqueue('three');
+			q.enqueue('four');
+			q.enqueue('five');
+			q.enqueue('six');
+			 //alert(q.empty());
+			q.dequeue();
+			alert(q.toString());
+			alert(q.front());
+			alert(q.back());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

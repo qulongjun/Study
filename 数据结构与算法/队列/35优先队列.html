@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 优先队列：在删除元素的时候不必遵守先进先出的约定
+			 * 例如：医院给患者治疗，会评估患者优先级，优先级高的先治疗，同优先级的按照先入先治疗原则
+			 */
+			 //code:表示患者的优先级
+			 //code值越小表示优先级越高
+			function Patient(name, code) {
+				this.name = name;
+				this.code = code;
+			}
+			var queue = new Queue();
+			queue.enqueue(new Patient('zhangSan', 3));
+			queue.enqueue(new Patient('liSi', 2));
+			queue.enqueue(new Patient('wangWu', 1));
+			queue.enqueue(new Patient('zhaoLiu', 5));
+			queue.enqueue(new Patient('qianJiaLu', 4));
+			queue.enqueue(new Patient('liuYiFei', 3));
+			queue.enqueue(new Patient('fanZhenJie', 2));
+			queue.enqueue(new Patient('maZi', 3));
+			alert(queue.dequeue());
+
+			function Queue() {
+				this.dataStore = []; //数组，用来保存队列数据
+				this.enqueue = enqueue; //入队
+				this.dequeue = dequeue; //出队
+				this.front = front; //队首元素
+				this.back = back; //队尾元素
+				this.toString = toString; //转换成字符串格式
+				this.empty = empty; //判断是否为空
+			}
+
+			function enqueue(element) {
+				this.dataStore.push(element);
+			}
+
+			function dequeue() {
+				var priority = 0;
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (this.dataStore[i].code < this.dataStore[priority].code) {
+						priority = i;
+					}
+				}
+				return this.dataStore.splice(priority, 1);
+			}
+
+			function front() {
+				return this.dataStore[0];
+			}
+
+			function back() {
+				return this.dataStore[this.dataStore.length - 1];
+			}
+
+			function toString() {
+				var reStr = '';
+				for (var i = 0; i < this.dataStore.length; i++) {
+					reStr += this.dataStore[i].name + 'code:' + this.dataStore[i].code + '\n';
+				}
+				return reStr;
+			}
+
+			function empty() {
+				if (this.dataStore.length) {
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
