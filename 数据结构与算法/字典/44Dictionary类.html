@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function Dictionary() {
+				this.dataStore = new Array();
+				this.add = add;
+				this.find = find;
+				this.remove = remove;
+				this.showAll = showAll;
+			}
+
+			function add(key, value) {
+				this.dataStore[key] = value;
+			}
+
+			function find(key) {
+				return this.dataStore[key];
+			}
+
+			function remove(key) {
+				delete this.dataStore[key];
+			}
+
+			function showAll() {
+				//Array.prototype.slice.call(arguments)能够将arguments转成数组
+				//Object.keys（obj），返回一个数组，数组里是该obj可被枚举的所有属性。
+				var datakeys = Array.prototype.slice.call(Object.keys(this.dataStore));
+				for (var key in datakeys) {
+					alert(datakeys[key] + '->' + this.dataStore[datakeys[key]]);
+				}
+			}
+			var pbook = new Dictionary();
+			pbook.add('Milk', '123');
+			pbook.add('David', '456');
+			pbook.add('Cynthia', '789');
+			alert(pbook.find('David'));
+			pbook.remove('David');
+			pbook.showAll();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

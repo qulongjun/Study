@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 写一个字典，用来存储一句话中单词出现的次数,并按字母顺序显示
+			 */
+			var str = 'the brown fox jumped over the blue fox';
+			var dic = countWords(str);
+			dic.showAll();
+			dic.showAllSort();
+
+			function countWords(str) {
+				var arrs = str.split(' ');
+				var dic = new Dictionary();
+				for (var i = 0; i < arrs.length; i++) {
+					if (dic.find(arrs[i])) {
+						dic.add(arrs[i], parseInt(dic.find(arrs[i])) + 1);
+					} else {
+						dic.add(arrs[i], 1);
+					}
+				}
+				return dic;
+			}
+
+			function Dictionary() {
+				this.dataStore = new Array();
+				this.add = add;
+				this.find = find;
+				this.showAll = showAll;
+				this.showAllSort = showAllSort;
+				this.clear = clear;
+			}
+
+			function add(key, value) {
+				this.dataStore[key] = value;
+			}
+
+			function find(key) {
+				return this.dataStore[key];
+			}
+
+			function showAll() {
+				//Array.prototype.slice.call(arguments)能够将arguments转成数组
+				//Object.keys（obj），返回一个数组，数组里是该obj可被枚举的所有属性。
+				var datakeys = Array.prototype.slice.call(Object.keys(this.dataStore));
+				for (var key in datakeys) {
+					alert(datakeys[key] + '->' + this.dataStore[datakeys[key]]);
+				}
+			}
+
+			function showAllSort() {
+				var datakeys = Array.prototype.slice.call(Object.keys(this.dataStore).sort());
+				for (var key in datakeys) {
+					alert(datakeys[key] + '->' + this.dataStore[datakeys[key]]);
+				}
+			}
+
+			function clear() {
+				/*	Object.keys(this.dataStore).forEach(function(key) {
+						delete this.dataStore[key];
+					}, this);*/
+				var dataKeys = Object.keys(this.dataStore);
+				for (var key in dataKeys) {
+					delete this.dataStore[dataKeys[key]];
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

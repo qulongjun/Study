@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var a = new Array();
+			/*a[0] = 'zhangSan';
+			a[1] = 'liSi';
+			a[2] = 'wangWu';
+			alert(a.length); //3;
+			a.sort();
+			alert(a);//liSi wangWu zhangSan*/
+			a['zhangSan'] = '123';
+			a['liSi'] = '456';
+			a['wangWu'] = '789';
+			a['zhaoLiu'] = '012';
+			alert(a); //undefined
+			alert(a.length); //0
+			a.sort();
+			alert(a); //undefined
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

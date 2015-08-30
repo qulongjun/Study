@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * slice有两个用法，一个是String.slice,一个是Array.slice，第一个返回的是字符串，第二个返回的是数组
+			 * Array.prototype.slice.call(arguments)能够将arguments转成数组，那么就是arguments.toArray().slice();
+			 *
+			 */
+			var a = {
+				length: 2,
+				0: 'first',
+				1: 'second'
+			};
+			var b = Array.prototype.slice.call(a);
+			alert(b); //first,second
+			var c = {
+				length: 2
+			};
+			var d = Array.prototype.slice.call(c);
+			alert(d); //undefined,undefinde
+			 //call了后，就把当前函数推入所传参数的作用域中去了,this指向传入的参数
+			var e = function() {
+				console.log(this); //zhangSan
+				console.log(typeof this); //object
+				console.log(this instanceof String); //true
+			};
+			e.call('zhangSan');
+		</script>
+
+	</head>
+
+	<body>
+	</body>
+
+</html>
