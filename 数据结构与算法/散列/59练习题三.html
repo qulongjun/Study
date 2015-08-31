@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 练习题二：使用开链法实现练习题一
+			 */
+			var dic = [{
+				'key': 'happy',
+				'value': 'SomeThing Happy'
+			}, {
+				'key': 'sad',
+				'value': 'something sad'
+			}, {
+				'key': 'good',
+				'value': 'something bad'
+			}, {
+				'key': 'good',
+				'value': 'something good'
+			}, {
+				'key': 'hello',
+				'value': 'something hello'
+			}];
+			var keys = [];
+			var values = [];
+			for (var i = 0; i < dic.length; i++) {
+				keys.push(dic[i].key);
+				values.push(dic[i].value);
+			}
+			var table = new HashTable();
+			table.buildChains();
+			for (var i = 0; i < keys.length; i++) {
+				table.put(keys[i], values[i]);
+			}
+			table.showDistro();
+			for (var i = 0; i < keys.length; i++) {
+				var result = table.get(keys[i]);
+				alert(result.length);
+			}
+
+			function HashTable() {
+				this.table = new Array(137);
+				this.simpleHash = simpleHash; //hash函数
+				this.betterHash = betterHash; //更好的散列函数
+				this.showDistro = showDistro; //显示散列表中的数据
+				this.put = put; //将数据存入散列表
+				this.get = get;
+				this.buildChains = buildChains;
+			}
+
+			function buildChains() {
+				for (var i = 0; i < this.table.length; i++) {
+					this.table[i] = new Array();
+				}
+			}
+
+			function simpleHash(data) {
+				var total = 0;
+				for (var i = 0; i < data.length; i++) {
+					total += data.charCodeAt(i);
+				}
+				console.log('simple:' + total % this.table.length);
+				return total % this.table.length;
+			}
+
+			function betterHash(data) {
+				const H = 31;
+				var total = 0;
+				for (var i = 0; i < data.length; i++) {
+					total += H * total + data.charCodeAt(i);
+				}
+				total = total % this.table.length;
+				if (total < 0) {
+					total += this.table.length - 1;
+				}
+				console.log('simple:' + total);
+				return parseInt(total);
+			}
+
+			function put(key, data) {
+				var pos = this.betterHash(key);
+				var index = 0;
+				while (this.table[pos][index] != undefined) {
+					++index;
+				}
+				this.table[pos][index] = data;
+				index++;
+			}
+
+			function get(key) {
+				var pos = this.betterHash(key);
+				return this.table[pos];
+			}
+
+			function showDistro() {
+				for (var i = 0; i < this.table.length; i++) {
+					if (this.table[i][0] != undefined) {
+						console.log(i + ':' + this.table[i]);
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

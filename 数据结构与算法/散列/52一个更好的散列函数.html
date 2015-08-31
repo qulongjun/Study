@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * HashTable:
+			 * 1.计算散列值的方法
+			 * 2.想散列中插入数据的方法
+			 * 3.从散列中读取数据的方法
+			 * 4.显示散列中数据分布的方法
+			 * 5.其他方法
+			 * 6.一个更好的散列函数
+			 */
+			function HashTable() {
+				this.table = new Array(137);
+				this.simpleHash = simpleHash; //hash函数
+				this.betterHash = betterHash; //更好的散列函数
+				this.showDistro = showDistro; //显示散列表中的数据
+				this.put = put; //将数据存入散列表
+				//this.get=get;
+			}
+
+			function simpleHash(data) {
+				var total = 0;
+				for (var i = 0; i < data.length; i++) {
+					//charCodeAt:可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数。
+					//方法 charCodeAt() 与 charAt() 方法执行的操作相似，只不过前者返回的是位于指定位置的字符的编码，而后者返回的是字符子串
+					total += data.charCodeAt(i);
+				}
+				console.log('simple:' + total % this.table.length);
+				return total % this.table.length;
+			}
+
+			function betterHash(data) {
+				const H = 31;
+				var total = 0;
+				for (var i = 0; i < data.length; i++) {
+					total += H * total + data.charCodeAt(i);
+				}
+				total = total % this.table.length;
+				if (total < 0) {
+					total += this.table.length - 1;
+				}
+				console.log('simple:' + total);
+				return parseInt(total);
+			}
+
+			function put(data) {
+				var pos = this.betterHash(data);
+				this.table[pos] = data;
+			}
+
+			function showDistro() {
+				for (var i = 0; i < this.table.length; i++) {
+					if (this.table[i] != undefined) {
+						console.log(i + ' : ' + this.table[i]);
+					}
+				}
+			}
+			var someNames = ['David', 'Jennifer', 'Donnie', 'Raymond', 'Cynthia', 'Mike', 'Clayton', 'Danny', 'Jonathan'];
+			var tables = new HashTable();
+			for (var i = 0; i < someNames.length; i++) {
+				tables.put(someNames[i]);
+			}
+			tables.showDistro();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
