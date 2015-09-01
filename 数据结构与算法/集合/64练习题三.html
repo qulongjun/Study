@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 练习题三：higher(element)方法：该方法返回比传入元素大的元素中最小的那个
+			 */
+			 //集合的构造方法
+			function Set() {
+				this.dataStore = [];
+				this.add = add;
+				this.remove = remove;
+				this.show = show;
+				this.size = size;
+				this.contains = contains;
+				this.union = union; //并集
+				this.subset = subset; //判断参数集合是否是当前元素的子集
+				this.difference = difference; //补集，属于当前集合但不属于参数集合
+				this.intersection = intersection; //交集
+				this.higher = higher;
+			}
+
+			function add(element) {
+				if (this.dataStore.indexOf(element) < 0) {
+					this.dataStore.push(element);
+					return true;
+				}
+				return false;
+			}
+
+			function remove(element) {
+				var pos = this.dataStore.indexOf(element);
+				if (pos > -1) {
+					this.dataStore.splice(pos, 1);
+					return true;
+				}
+				return false;
+			}
+
+			function show() {
+				return this.dataStore;
+			}
+
+			function size() {
+				return this.dataStore.length;
+			}
+
+			function contains(element) {
+				if (this.dataStore.indexOf(element) > -1) {
+					return true;
+				}
+				return false;
+			}
+
+			function union(set) {
+					var tempSet = new Set();
+					for (var i = 0; i < this.dataStore.length; i++) {
+						tempSet.add(this.dataStore[i]);
+					}
+					for (var j = 0; j < set.dataStore.length; j++) {
+						if (!tempSet.contains(set.dataStore[j])) {
+							tempSet.add(set.dataStore[j]);
+						}
+					}
+					return tempSet;
+				}
+				//判断set参数是否为当前集合的子集
+
+			function subset(set) {
+				if (set.size() > this.size()) {
+					return false;
+				}
+				for (var i = 0; i < set.dataStore.length; i++) {
+					if (!this.contains(set.dataStore[i])) {
+						return false;
+					}
+				}
+				return true;
+			}
+
+			function difference(set) {
+				var tempSet = new Set();
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (!set.contains(this.dataStore[i])) {
+						tempSet.add(this.dataStore[i]);
+					}
+				}
+				return tempSet;
+			}
+
+			function intersection(set) {
+				var tempSet = new Set();
+				for (var i = 0; i < set.dataStore.length; i++) {
+					if (this.contains(set.dataStore[i])) {
+						tempSet.add(set.dataStore[i]);
+					}
+				}
+				return tempSet;
+			}
+
+			function higher(element) {
+				var arrs = [];
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (this.dataStore[i] > element) {
+						arrs.push(this.dataStore[i]);
+					}
+				}
+				return arrs.sort()[0];
+			}
+			var sets2 = new Set();
+			sets2.add(1);
+			sets2.add(2);
+			sets2.add(3);
+			sets2.add(5);
+			sets2.add(4);
+			sets2.add(1);
+			sets2.add(6);
+			alert(sets2.higher(5));
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

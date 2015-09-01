@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 集合定义：一组无序但彼此有一定相关性的成员构成的，每个成员在集合中只能出现一次。
+			 * 集合元素是无序的，唯一的
+			 *
+			 * 定义：
+			 * 1.不包含任何成员的集合为空集、全集则是包含一切可能成员的集合
+			 * 2.如果两个集合的成员完全相同，则两个集合相等
+			 * 3.如果一个集合中所有成员都属于另一个集合，则前一个集合称为后一个集合的子集
+			 *
+			 *
+			 *集合操作：交、并、补
+			 */
+			 //集合的构造方法
+			function Set() {
+				this.dataStore = [];
+				this.add = add;
+				this.remove = remove;
+				this.show = show;
+			}
+
+			function add(element) {
+				if (this.dataStore.indexOf(element) < 0) {
+					this.dataStore.push(element);
+					return true;
+				}
+				return false;
+			}
+
+			function remove(element) {
+				var pos = this.dataStore.indexOf(element);
+				if (pos > -1) {
+					this.dataStore.splice(pos, 1);
+					return true;
+				}
+				return false;
+			}
+
+			function show() {
+				return this.dataStore;
+			}
+			var sets=new Set();
+			sets.add('zhangSan');
+			sets.add('liSi');
+			sets.add('wangWu');
+			sets.add('zhaoLiu');
+			sets.add('ceShi');
+			sets.add('maZi');
+			sets.remove('liSi');
+			alert(sets.show());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

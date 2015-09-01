@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 练习题一：修改Set类，使里面元素按顺序存储。
+			 */
+			 //集合的构造方法
+			function Set() {
+				this.dataStore = [];
+				this.add = add;
+				this.remove = remove;
+				this.show = show;
+				this.size = size;
+				this.contains = contains;
+				this.union = union; //并集
+				this.subset = subset; //判断参数集合是否是当前元素的子集
+				this.difference = difference; //补集，属于当前集合但不属于参数集合
+				this.intersection = intersection; //交集
+				this.showSort = showSort; //按顺序排列
+			}
+
+			function add(element) {
+				if (this.dataStore.indexOf(element) < 0) {
+					this.dataStore.push(element);
+					return true;
+				}
+				return false;
+			}
+
+			function remove(element) {
+				var pos = this.dataStore.indexOf(element);
+				if (pos > -1) {
+					this.dataStore.splice(pos, 1);
+					return true;
+				}
+				return false;
+			}
+
+			function show() {
+				return this.dataStore;
+			}
+
+			function showSort() {
+				return this.dataStore.sort();
+			}
+
+			function size() {
+				return this.dataStore.length;
+			}
+
+			function contains(element) {
+				if (this.dataStore.indexOf(element) > -1) {
+					return true;
+				}
+				return false;
+			}
+
+			function union(set) {
+					var tempSet = new Set();
+					for (var i = 0; i < this.dataStore.length; i++) {
+						tempSet.add(this.dataStore[i]);
+					}
+					for (var j = 0; j < set.dataStore.length; j++) {
+						if (!tempSet.contains(set.dataStore[j])) {
+							tempSet.add(set.dataStore[j]);
+						}
+					}
+					return tempSet;
+				}
+				//判断set参数是否为当前集合的子集
+
+			function subset(set) {
+				if (set.size() > this.size()) {
+					return false;
+				}
+				for (var i = 0; i < set.dataStore.length; i++) {
+					if (!this.contains(set.dataStore[i])) {
+						return false;
+					}
+				}
+				return true;
+			}
+
+			function difference(set) {
+				var tempSet = new Set();
+				for (var i = 0; i < this.dataStore.length; i++) {
+					if (!set.contains(this.dataStore[i])) {
+						tempSet.add(this.dataStore[i]);
+					}
+				}
+				return tempSet;
+			}
+
+			function intersection(set) {
+				var tempSet = new Set();
+				for (var i = 0; i < set.dataStore.length; i++) {
+					if (this.contains(set.dataStore[i])) {
+						tempSet.add(set.dataStore[i]);
+					}
+				}
+				return tempSet;
+			}
+			var sets = new Set();
+			sets.add('zhangSan');
+			sets.add('liSi');
+			sets.add('wangWu');
+			sets.add('zhaoLiu');
+			sets.add('ceShi');
+			sets.add('maZi');
+			alert(sets.showSort());
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
