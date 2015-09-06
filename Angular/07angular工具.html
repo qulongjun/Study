@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app>
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			 //angular.bind()->类似于Jquery $.proxy():改变this指针指向
+			function Aaa($scope, $rootScope) {
+				$scope.name = 'hello';
+			}
+
+			function show(n1, n2) {
+					//alert(n1);
+					//alert(n2);
+					//alert(this);
+				}
+				//show();
+				//使用bind修改this指针，第一个参数为需要指向的内容，第二个参数为需要修改的函数名
+			angular.bind(document, show)(3, 4);
+			 //angular.copy()：拷贝对象
+			var a = {
+				name: 'hello'
+			};
+			var b = {
+				agr: 20
+			};
+			 //var c = angular.copy(a); //将a拷贝一份给c，并且修改c不会对a造成影响
+			 //console.log(c); //hello，拷贝了a的对象
+			 //c.name = 'Hi' //c修改了name属性
+			 //console.log(a); //hello,不造成影响
+			 //console.log(c); //hi
+			 //var d = angular.copy(a, b); //a将b的值全部覆盖了，a拷贝了一份给b
+			 //console.log(a); //Hello
+			 //console.log(b); //Hello
+			 //console.log(d); //Hello
+			/*
+			 * angular.extend(参数1，参数2):对象的继承，将参数2的值赋值给参数1，且保留参数1的值
+			 */
+			var e = angular.extend(b, a);
+			console.log(a); //hello
+			console.log(b); //20 hello
+			console.log(e); //20 hello
+		</script>
+	</head>
+
+	<body>
+		<div id="" ng-controller="Aaa">
+			<p>{{name}}</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function Aaa($scope) {
+				$scope.iPhone = {
+					money: 5,
+					num: 1,
+					fre: 10
+				};
+				$scope.sum = function() {
+					return $scope.iPhone.money * $scope.iPhone.num;
+				};
+				//				$scope.$watch('iPhone.money', function(newValue,oldValue) {
+				//					console.log(newValue);
+				//					console.log(oldValue);
+				//				}, true);
+				$scope.$watch($scope.sum, function(newValue, oldValue) {
+					$scope.iPhone.fre = newValue >= 100 ? 0 : 10;
+				}, true);
+				//$watch:监听数据的变化，并做相应的处理,只能监听单值
+				//第一个参数为需要监听的对象,如果是函数，则$scope.functionName,不用括号和引号，若为属性，则直接是'属性'
+				//第二个参数为监听事件,有两个参数：第一个为新的值，第二个为旧的值
+				//第三个参数为boolean,ture/false，表示是否监听一个整体，true表示可以监听一个整体
+			}
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="Aaa">
+			<p>价格：
+				<input type="text" id="" value="" ng-model="iPhone.money" />
+			</p>
+			<p>个数：
+				<input type="text" id="" value="" ng-model="iPhone.num" />
+			</p>
+			<!--
+				后面加上'|currency',自动变成金额表示方法，默认为美元
+				通过冒号传递参数，在后面跟上:'￥'表示使用￥替代美元符号
+			-->
+			<p><span>费用:{{sum()|currency:'￥'}}</span></p>
+			<p><span>运费:{{iPhone.fre|currency:'￥'}}</span></p>
+			<p><span>总价:{{sum()+iPhone.fre|currency:'￥'}}</span></p>
+		</div>
+	</body>
+
+</html>

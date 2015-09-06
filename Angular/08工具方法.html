@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app>
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * angular.isArray():判断是否是数组
+			 * angular.isDate():判断是否为时间对象
+			 * angular.isDefined():判断是否存在一个元素
+			 * angular.isUndefined()://判断是否不存在一个元素
+			 * angular.isFunction()://判断是否是一个函数
+			 * angular.isNumber()://判断是否一个数字
+			 * angular.isObject()://判断是否是一个对象
+			 * angular.isString()://判断是否是一个字符串
+			 * angular.isElement()://判断是否是一个元素
+			 */
+			 //var a = [];
+			 //alert(angular.isArray(a)); //true
+			 //window.onload = function() {
+			 //	alert(angular.isElement(document.body)); //true
+			 //};
+			/*
+			 * angular.version:判断angular的版本
+			 * angular.equals:判断两个元素是否相等,两个NaN比较也为true，只要是两个相同元素都是true
+			 * angular.forEach:遍历操作,回调函数的参数与JQuery相反，先value，后index
+			 * angular.fromJSON/toJSON:对字符串形式的JSON进行解析，对JSON进行的字符串转换
+			 * angular.identity/noop:identity参数传递的是什么，最终返回的结果就是什么，noop：返回空
+			 * angular.lowercase/uppercase:转小写和大写
+			 * angular.element:获取元素
+			 * angular.bootstrap:动态初始化ng-app，如果一个页面需要多次初始化ng-app，则必须使用bootstrap
+			 * angular.injector:注册器
+			 */
+			 //var a = 3;
+			 //var b = 4;
+			 //alert(angular.equals(a, b)); //false
+			 //var values = ['a', 'b', 'c'];
+			/*
+			 * forEach：第一个参数为需要遍历的对象
+			 * 第二个参数为回调函数，回调函数的参数为value值和index索引\n
+			 * 第三个参数为result，即遍历完成之后需要返回的对象
+			 * 在回调函数中，this指向第三个参数
+			 */
+			/*var result = [];
+			angular.forEach(values, function(value, index) {
+				//这里的this指向第三个参数
+				this.push(value + '的索引为' + index);
+			}, result);
+			console.log(result);*/
+			 //var str = '{"name": "hello","age": "20"}';
+			 //var obj = angular.fromJson(str);
+			 //console.log(obj);
+			 //var json = {"name": "hello","age": "20"};
+			 //var obj2 = angular.toJson(json);
+			 //console.log(obj2);
+			//var str = "hello";
+			//var result = angular.identity(str);//Hello
+			//alert(result);
+		</script>
+	</head>
+
+	<body>
+		<div id="div1">aaa
+			<script>
+				var oDiv=document.getElementById('div1');
+				angular.element(oDiv).css('background','red');
+			</script>
+		</div>
+	</body>
+
+</html>

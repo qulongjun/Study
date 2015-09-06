@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app>
+	<!--ng-app：初始化指令-->
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			 //以ng开头的标签就是angular的指令
+			 //M
+			 //必须将数据挂载到$scope上才能在外部使用，直接定义变量则无效
+			function Aaa($scope, $rootScope, $timeout) {
+					$scope.name = 'hello';
+					/*setTimeout(function(){
+						$scope.name='你好';
+					},2000);*/
+					//在angularJS中，原生的定时器不具备刷新视图的功能，必须使用Angular自带的$timeout
+					$timeout(function() {
+						$scope.name = '你好';
+					}, 2000);
+					$scope.show = function() {
+						$scope.name = '狗蛋2';
+					}
+				}
+				//Angular双向数据绑定
+				/*
+				 * MVVM：数据改变会让视图改变，视图改变也会导致数据改变
+				 */
+		</script>
+	</head>
+
+	<body>
+		<!--C：控制器-->
+		<!--ng-controller中才能对Aaa起作用-->
+		<!--ng-cpmtroller:控制器，链接视图和数据-->
+		<!--ng-click="":点击指令,变量为function中定义的变量 ng-click="name='狗蛋'"-->
+		<div id="" ng-controller="Aaa" ng-click='show()' ng-mouseover='name="测试"'>
+			<!--V-->
+			<p>{{name}}</p>
+		</div>
+
+	</body>
+
+</html>

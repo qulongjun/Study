@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app>
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			 //M
+			 //必须将数据挂载到$scope上才能在外部使用，直接定义变量则无效
+			 //形参是不能变的。服务
+			function Aaa($scope, $rootScope) {
+				$scope.name = 'hello';	
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<!--C：控制器-->
+		<!--ng-controller中才能对Aaa起作用-->
+		<div id="" ng-controller="Aaa">
+			<!--V-->
+			<p>{{name}}</p>
+			<p>{{b}}</p>
+		</div>
+		<div id="" ng-controller="Bbb">
+			<!--V-->
+			<p>{{name}}</p>
+			<p>{{age}}</p>
+		</div>
+		<p>{{age}}</p>
+	</body>
+
+</html>

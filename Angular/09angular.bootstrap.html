@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp', []);
+			m1.controller('Aaa', ['$scope',
+				function($scope) {
+					$scope.name = 'hello';
+				}
+			]);
+			m1.controller('Bbb', ['$scope',
+				function($scope) {
+					$scope.name = 'hi';
+				}
+			]);
+			document.onclick = function() {
+				//初始化是在事件身上，点击之后再加载
+				//第一个参数为初始化的位置，即ng-app的位置
+				//第二个参数为ng-app需要加载的名字
+				angular.bootstrap(document, ['myApp']);
+			};
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="Aaa">
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller="Bbb">
+			<p>{{name}}</p>
+		</div>
+	</body>
+
+</html>

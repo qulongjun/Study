@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			 //如果不使用模块化，Aaa和Bbb很有可能会有冲突。
+			 //模块化函数：angular.module();
+			 //第一个参数为模块的名字，第二个参数为数组，是该模块需要依赖的其他模块
+			 //需要在ng-app中指定具体哪个模块作为初始模块，ng-app='name'
+			var m1 = angular.module('myApp', []);
+			 //给模块化m1添加一个控制器，m1.controller()，参数为：函数名、函数式
+			 //压缩处理：当压缩的时候，$scope会进行压缩，导致angular失效，解决的方法为['$scope',function($scope){}]
+			 //总方法：moduleName.controller('functionName',['$scope',function($scope){}]);
+			m1.controller('Aaa', ['$scope',
+				function($scope) {
+					$scope.name = 'hello';
+				}
+			]);
+			m1.controller('Bbb', ['$scope',
+				function($scope) {
+					$scope.name = 'hi';
+				}
+			]);
+			/*function Aaa($scope) {
+				$scope.name = 'hello';
+			}
+			function Bbb($scope) {
+				$scope.name = 'hi';
+			}*/
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="Aaa">
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller="Bbb">
+			<p>{{name}}</p>
+		</div>
+	</body>
+
+</html>

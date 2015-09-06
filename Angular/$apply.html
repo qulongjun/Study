@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app>
+	<!--ng-app：初始化指令-->
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<script type="text/javascript">
+			function Aaa($scope, $rootScope, $timeout) {
+				$scope.name = 'hello';
+				//$scope.$apply:可以用来监听数据变化，一旦有了变化，会影响到视图，
+				//$scope.$apply的好处：可以在第三方的库或者原生JS中直接使用
+				setTimeout(function() {
+					$scope.$apply(function() {
+						$scope.name = '你好';
+					})
+				}, 2000);
+				/*$timeout(function() {
+					$scope.name = '你好';
+				}, 2000);*/
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div id="" ng-controller="Aaa" ng-click='show()' ng-mouseover='name="测试"'>
+			<p>{{name}}</p>
+		</div>
+
+	</body>
+
+</html>
