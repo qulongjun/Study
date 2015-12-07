@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+		<script data-main="js/main" src="js/require.js"></script>
+		<script type="text/javascript">
+			//require()有两个参数：第一个为数组类型[]，表示需要引入的js文件的路径，第二个为回调函数，表示加载完成之后的执行函数，
+			//require.config是用来配置模块加载位置，简单点说就是给模块起一个更短更好记的名字
+			//path中可以定义路径和名称，再require调用时只需要传入简短别名即可，paths是一个JSON，里面是K/V格式数据，别名：路径数组，其中，路径数组可以设置多个，以逗号隔开
+			//再Main.js中进行配置
+			//data-main还有一个重要的功能，当script标签指定data-main属性时，require会默认的将data-main指定的js为根路径
+//			require.config({
+//				paths: {
+//					"jquery":["http://libs.baidu.com/jquery/2.0.3/jquery","js/jquery-2.1.4"],
+//					"a":"js/a"
+//				}
+//			})
+			//在使用requirejs时，加载模块时不用写.js后缀的，当然也是不能写后缀
+			//$是JQuery的输出变量，当有多个的时候，可以多个输出变量依次列出
+			
+			require(["jquery","a"], function($) {
+				$(function(){
+					alert("load success");
+				})
+			});
+		</script>
+	</head>
+
+	<body>
+		<span>body</span>
+	</body>
+
+</html>
