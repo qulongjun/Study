@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var Book = Backbone.Model.extend({
+					defaults: {
+						name: "unKnown",
+						author: "unKnown",
+						price: 2
+					},
+					validate: function(data) {
+						if (data.price < 1) {
+							return "书籍的价格不应该低于1元";
+						}
+					}
+				});
+				var book1=new Book();
+				book1.on('error',function(model,error){
+					console.log(error);
+					console.log(model.get('price'));
+				});
+				book1.set('price',0.9,{
+					error:function(model,error){
+						console.log('自定义错误'+error);
+					},
+					silent:true
+				});
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

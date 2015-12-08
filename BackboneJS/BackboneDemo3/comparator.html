@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var Book = Backbone.Model.extend({
+					defaults: {
+						name: 'unKnown',
+						price: 0
+					}
+				});
+				var BookList = Backbone.Collection.extend({
+					model: Book,
+					comparator: function(m1, m2) {
+						var price1 = m1.get('price');
+						var price2 = m2.get('price');
+						return price1 < price2 ? 1 : 0;
+					}
+				});
+				var books = new BookList();
+				books.add({
+						name: '书籍一',
+						price: 30
+					});
+					books.push({
+						name: '书籍二',
+						price: 20
+					});
+					books.unshift({
+						name: '书籍三',
+						price: 50
+					});
+					books.add({
+						name: '书籍四',
+						price: 45
+					});
+					for(var i=0;i<books.length;i++){
+						console.log(books.models[i].get('price'));
+					}
+					
+			})();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function(){
+				var m=new Backbone.Model;
+				m.on('custom',function(index){
+					//监听函数接收并显示参数index
+					alert(index);
+				});
+				for(var i=0;i<3;i++)
+				{
+					m.trigger('custom',i);
+				}
+				m.off('custom');
+				
+				m.trigger('custom',i);
+			})();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

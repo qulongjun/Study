@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var Book = Backbone.Model.extend(function() {
+					defaults: {
+						name: 'unKnown'
+					}
+				});
+				var BookList = Backbone.Collection.extend({
+					model: Book
+				})
+				var book1 = new Book({
+					id:1001,
+					name: "JavaScript书籍1"
+				});
+				var book2 = new Book({
+					id:1002,
+					name: "JavaScript书籍2"
+				});
+				var book3 = new Book({
+					id:1003,
+					name: "JavaScript书籍3"
+				});
+				var books = new BookList([book1,book2,book3]);
+				//alert(books.length);
+				//books.add(book2);
+				//books.unshift(book3);
+				//books.push(book3);
+				//books.remove(book3); 
+				//books.shift();
+				//books.pop();
+				//console.log(books.getByCid('cid'));
+				//console.log(books.get(1001));
+				//console.log(books.getByCid('c0'));
+				//console.log(books.at(1));
+				console.log(books.where({
+					name:"JavaScript书籍3"
+				}))
+				for (var i=0;i<books.length;i++) {
+					//console.log(books.models[i]);
+				}
+				
+				
+//				var models2=[{
+//					name:"书籍1"
+//				},{
+//					name:"书籍2"
+//				},{
+//					name:"书籍3"
+//				},{
+//					name:"书籍4"
+//				}];
+//				var books2=new BookList(models2);
+//				console.log(books2.models);
+			})();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

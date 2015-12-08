@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var ListView = Backbone.View.extend({
+					tagName: 'div',
+					className: 'listview',
+					id: 'list',
+					attributes: {
+						title: '列表',
+						style: 'color:red'
+					},
+					render: function() {
+						this.el.innerHTML = 'Hello World!';
+						
+						document.body.appendChild(this.el);
+					}
+				});
+				var listView = new ListView();
+				listView.render();
+			})();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

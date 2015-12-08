@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var Book=Backbone.Model.extend({
+				defaults:{
+					name:"unKnown",
+					author:"unKnown",
+					price:0
+				}
+			})
+			var book1=new Book({
+				name:"zhangSan"
+			});
+			book1.set("price",2);
+			book1.set("age",20);
+			book1.set({
+				a:"test",
+				b:"test2",
+				author:"test3"
+			});
+			alert(book1.get("age"));
+			console.dir(book1.attributes);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

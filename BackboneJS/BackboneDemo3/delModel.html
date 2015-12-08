@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function(){
+				var Book=Backbone.Model.extend({
+					defaults:{
+						name:"JavaScript入门经典",
+						author:"zhangSan",
+						price:88.3
+					}
+				});
+				var book1=new Book();
+				console.log(book1.get("name"));
+				book1.unset('name');	
+				console.log(book1.get("name"));
+				console.log(book1.get("price"));
+				book1.clear();
+				console.log(book1.get("price"));
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function(){
+				var Book=Backbone.Model.extend({
+				defaults:{
+					name:"unKnown",
+					author:"unKnown",
+					price:0
+				}
+			})
+				var book1=new Book();
+				book1.on('change',function(model){
+					console.log("change事件被触发");
+				})
+				book1.on('change:name',function(model,value){
+					 console.log('change:name事件被触发'); 
+				})
+				book1.on('change:author',function(model,value){
+					console.log('change:author事件被触发');
+				})
+				book1.set({
+					name:"zhangSan",
+					author:"liSi"
+				});
+			})();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
